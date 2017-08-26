@@ -3,7 +3,8 @@
 namespace ElementsFramework\Elements\BootstrapColumns;
 
 
-use ElementsFramework\Elements\BootstrapColumns\Col6Col6BootstrapColumnElement;
+use ElementsFramework\Elements\BootstrapColumns\UIElements\Col6Col6BootstrapColumnElement;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\ServiceProvider;
 
 class BootstrapColumnServiceProvider extends ServiceProvider
@@ -27,9 +28,11 @@ class BootstrapColumnServiceProvider extends ServiceProvider
     public function register()
     {
         view()->composer(
-                'BootstrapColumns::col6-col6',
-                Col6Col6BootstrapColumnElement::renderViewComposer
-            );
+            'BootstrapColumns::col6-col6',
+            function(View $view) {
+                Col6Col6BootstrapColumnElement::renderViewComposer($view);
+            }
+        );
     }
 
 }
