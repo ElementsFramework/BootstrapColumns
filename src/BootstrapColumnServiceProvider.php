@@ -1,6 +1,6 @@
 <?php
 
-namespace ElementsFramework\Layout;
+namespace ElementsFramework\Elements\BootstrapColumns;
 
 
 use ElementsFramework\Elements\BootstrapColumns\Col6Col6BootstrapColumnElement;

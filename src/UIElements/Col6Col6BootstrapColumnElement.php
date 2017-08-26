@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ElementsFramework\Elements\BootstrapColumns;
+namespace ElementsFramework\Elements\BootstrapColumns\UIElements;
 
 
 use ElementsFramework\Layout\Contract\UIElement;
