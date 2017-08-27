@@ -107,6 +107,7 @@ HTML;
     {
         /** @var UIElement $element */
         $element = $view->getData()["element"];
+        $view->with('element', $element);
         $view->with('col1', $element->getContentData()['col1']);
         $view->with('col2', $element->getContentData()['col2']);
     }
