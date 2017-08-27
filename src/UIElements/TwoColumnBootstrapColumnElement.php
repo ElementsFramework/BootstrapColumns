@@ -7,7 +7,7 @@ namespace ElementsFramework\Elements\BootstrapColumns\UIElements;
 use ElementsFramework\Layout\Contract\UIElement;
 use Illuminate\View\View;
 
-class Col6Col6BootstrapColumnElement extends UIElement
+class TwoColumnBootstrapColumnElement extends UIElement
 {
 
     /**
@@ -20,7 +20,7 @@ class Col6Col6BootstrapColumnElement extends UIElement
      * User readable name of the UI element that will be shown in the builder.
      * @var string
      */
-    protected $name = "1/2 & 1/2 columns";
+    protected $name = "2 columns";
 
     /**
      * HTML element that renders the icon that is shown for the element in the builder.
@@ -37,14 +37,14 @@ class Col6Col6BootstrapColumnElement extends UIElement
      */
     protected $content = <<<HTML
 <div class="row" slot="content" v-if="elementDefinition.contentData">
-  <div class="col-md-6">
+  <div :class="['col-md-' + elementDefinition.settings.content.column_1_width]">
     <draggable class="draggable" :options="dragOptions" container-id="col1"
                :list="elementDefinition.contentData.col1">
       <ui-element v-for="l in elementDefinition.contentData.col1" v-if="l !== undefined" :key="l.id" :elementDefinition.sync="l">
       </ui-element>
     </draggable>
   </div>
-  <div class="col-md-6">
+  <div :class="['col-md-' + elementDefinition.settings.content.column_2_width]">
     <draggable class="draggable" :options="dragOptions" container-id="col2"
                :list="elementDefinition.contentData.col2">
       <ui-element v-for="l in elementDefinition.contentData.col2" v-if="l !== undefined" :key="l.id" :elementDefinition.sync="l">
@@ -70,7 +70,34 @@ HTML;
      * For more details visit https://github.com/ElementsFramework/LayoutBuilderUI
      * @var array
      */
-    protected $settingsDefinition = null;
+    protected $settingsDefinition = [
+        "content" => [
+            "column_1_width" => 6,
+            "column_2_width" => 6,
+        ],
+        "definition" => [
+            "fields" => [
+                [
+                    "type" => "input",
+                    "inputType" => "number",
+                    "label" => "Column 1 width",
+                    "model" => "column_1_width",
+                    "min" => 1,
+                    "max" => 12,
+                    "validator" => "VueFormGenerator.validators.number"
+                ],
+                [
+                    "type" => "input",
+                    "inputType" => "number",
+                    "label" => "Column 2 width",
+                    "model" => "column_2_width",
+                    "min" => 1,
+                    "max" => 12,
+                    "validator" => "VueFormGenerator.validators.number"
+                ],
+            ],
+        ],
+    ];
 
     /**
      * Allows you to pass data to the view when it gets rendered.
@@ -90,6 +117,6 @@ HTML;
      */
     public static function getViewName()
     {
-        return "BootstrapColumns::col6-col6";
+        return "BootstrapColumns::two-columns";
     }
 }

@@ -3,7 +3,7 @@
 namespace ElementsFramework\Elements\BootstrapColumns;
 
 
-use ElementsFramework\Elements\BootstrapColumns\UIElements\Col6Col6BootstrapColumnElement;
+use ElementsFramework\Elements\BootstrapColumns\UIElements\TwoColumnBootstrapColumnElement;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,9 +28,9 @@ class BootstrapColumnServiceProvider extends ServiceProvider
     public function register()
     {
         view()->composer(
-            'BootstrapColumns::col6-col6',
+            'BootstrapColumns::two-columns',
             function(View $view) {
-                Col6Col6BootstrapColumnElement::renderViewComposer($view);
+                TwoColumnBootstrapColumnElement::renderViewComposer($view);
             }
         );
     }
