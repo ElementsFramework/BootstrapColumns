@@ -14,13 +14,13 @@ class TwoColumnBootstrapColumnElement extends UIElement
      * Namespace of the package the element is published in definition.
      * @var string
      */
-    protected $namespace = "BootstrapColumns";
+    protected $namespace = 'BootstrapColumns';
 
     /**
      * User readable name of the UI element that will be shown in the builder.
      * @var string
      */
-    protected $name = "2 columns";
+    protected $name = '2 columns';
 
     /**
      * HTML element that renders the icon that is shown for the element in the builder.
@@ -71,29 +71,29 @@ HTML;
      * @var array
      */
     protected $settingsDefinition = [
-        "content" => [
-            "column_1_width" => 6,
-            "column_2_width" => 6,
+        'content' => [
+            'column_1_width' => 6,
+            'column_2_width' => 6,
         ],
-        "definition" => [
-            "fields" => [
+        'definition' => [
+            'fields' => [
                 [
-                    "type" => "input",
-                    "inputType" => "number",
-                    "label" => "Column 1 width",
-                    "model" => "column_1_width",
-                    "min" => 1,
-                    "max" => 12,
-                    "validator" => "VueFormGenerator.validators.number"
+                    'type' => 'input',
+                    'inputType' => 'number',
+                    'label' => 'Column 1 width',
+                    'model' => 'column_1_width',
+                    'min' => 1,
+                    'max' => 12,
+                    'validator' => 'VueFormGenerator.validators.number'
                 ],
                 [
-                    "type" => "input",
-                    "inputType" => "number",
-                    "label" => "Column 2 width",
-                    "model" => "column_2_width",
-                    "min" => 1,
-                    "max" => 12,
-                    "validator" => "VueFormGenerator.validators.number"
+                    'type' => 'input',
+                    'inputType' => 'number',
+                    'label' => 'Column 2 width',
+                    'model' => 'column_2_width',
+                    'min' => 1,
+                    'max' => 12,
+                    'validator' => 'VueFormGenerator.validators.number'
                 ],
             ],
         ],
@@ -106,8 +106,8 @@ HTML;
     public static function renderViewComposer(View $view)
     {
         /** @var UIElement $element */
-        $element = $view->getData()["element"];
-        $view->with('element', $element);
+        $element = $view->getData()['element'];
+        $view->with('options', $element->getOptions());
         $view->with('col1', $element->getContentData()['col1']);
         $view->with('col2', $element->getContentData()['col2']);
     }
@@ -118,6 +118,6 @@ HTML;
      */
     public static function getViewName()
     {
-        return "BootstrapColumns::two-columns";
+        return 'BootstrapColumns::two-columns';
     }
 }
